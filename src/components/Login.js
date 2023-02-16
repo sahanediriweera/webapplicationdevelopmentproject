@@ -2,11 +2,10 @@ import React from 'react';
 import Pic1 from './../Graphics/knight.jpg';
 import Pic2 from './../Graphics/impossible.jpg';
 import Pic3 from './../Graphics/loki.jpg';
+import { Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import BuyerLogin from './BuyerLogin';
+import SellerLogin from './SellerLogin';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,60 +35,16 @@ const Login = () => {
       </div>
       <div>
         <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h4" gutterBottom>
-                For Buyers
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum rhoncus tristique nunc, vel pulvinar nisi. Sed auctor
-                interdum erat, ut consectetur velit posuere ut.
-              </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                Login
-              </Button>
-              <Button
-                variant="outlined"
-                color="primary"
-                className={classes.button}
-              >
-                Signup
-              </Button>
-            </Paper>
+        <Container maxWidth="md">
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <BuyerLogin classes={classes} />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <SellerLogin classes={classes} />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
-              <Typography variant="h4" gutterBottom>
-                For Sellers
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum rhoncus tristique nunc, vel pulvinar nisi. Sed auctor
-                interdum erat, ut consectetur velit posuere ut.
-              </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                Login
-              </Button>
-              <Button
-                variant="outlined"
-                color="primary"
-                className={classes.button}
-              >
-                Signup
-              </Button>
-            </Paper>
-          </Grid>
-        </Grid>
+        </Container>
       </div>
       </div>
     </div>
