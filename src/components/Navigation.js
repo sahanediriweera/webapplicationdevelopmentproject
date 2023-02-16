@@ -1,6 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import logo from './../Graphics/ticket.png';
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
@@ -12,11 +16,13 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 20px',
   },
   navbarLogo: {
-    height: '40px',
+    height: '70px', // set the height of the logo to 30px
+    margin: '5px', // add margin to adjust the logo position
   },
   navbarTitle: {
     fontSize: '24px',
     margin: 0,
+    color:'#000000'
   },
   navbarButtons: {
     display: 'flex',
@@ -34,20 +40,30 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+
 const Navigation = () => {
   const classes = useStyles();
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarLogo}>
-        <img src="./ticket.png" alt="Logo" />
-      </div>
-      <h1 className={classes.navbarTitle}>Website Title</h1>
-      <div className={classes.navbarButtons}>
-        <Button className={classes.button}>Sign Up</Button>
-        <Button className={classes.button}>Login</Button>
-      </div>
-    </nav>
+    <div>
+      <AppBar position="static">
+        <Toolbar className={classes.navbar}>
+          <img src={logo} className={classes.navbarLogo} alt="logo" />
+          <Typography variant="h6" className={classes.navbarTitle}>
+            Tickets Warehouse
+          </Typography>
+          <div className={classes.navbarButtons}>
+            <Button variant="contained" className={classes.button}>
+              Sign Up
+            </Button>
+            <Button variant="contained" className={classes.button}>
+              Login
+            </Button>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 }
 
