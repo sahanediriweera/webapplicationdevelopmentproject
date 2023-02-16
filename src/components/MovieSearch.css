@@ -1,0 +1,35 @@
+.MovieSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .SearchBar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  
+  .SearchInput {
+    border: none;
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  
+  .SearchButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .SearchButton:hover {
+    background-color: #3e8e41;
+  }
