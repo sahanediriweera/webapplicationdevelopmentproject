@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './SignUp.css';
 
 const SignUp = () => {
   const [name, setName] = useState('');
