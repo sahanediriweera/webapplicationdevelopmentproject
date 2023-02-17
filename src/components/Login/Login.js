@@ -1,7 +1,7 @@
 import React from 'react';
-import Pic1 from './../Graphics/knight.jpg';
-import Pic2 from './../Graphics/impossible.jpg';
-import Pic3 from './../Graphics/loki.jpg';
+import Pic1 from './../../Graphics/knight.jpg';
+import Pic2 from './../../Graphics/impossible.jpg';
+import Pic3 from './../../Graphics/loki.jpg';
 import { Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BuyerLogin from './BuyerLogin';
