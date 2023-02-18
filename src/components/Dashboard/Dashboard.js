@@ -14,14 +14,14 @@ const dashboard = () => {
         <img src={Pic2} alt="backpic2" style={{ position: 'absolute', top: 0, left: '33.33%', height: '100%', width: '33.33%', objectFit: 'cover' }} />
         <img src={Pic3} alt="backpic3" style={{ position: 'absolute', top: 0, left: '66.66%', height: '100%', width: '33.33%', objectFit: 'cover' }} />
       </div>
-      <div style={{ display: 'flex', justifyContent:'space-between' }}>
-        <div style={{flex:1, margin:'0 10px'}}>
+      <div style={{ display: 'flex', justifyContent:'space-between',flexDirection:'row' }}>
+        <div style={{flex:1, margin:'0 10px',width:'33%'}}>
           <MovieList/>          
         </div>
-        <div>
+        <div style={{width:'33%',marginLeft:'33%'}}>
           <MovieSearch style={{flex:1, margin:'0 10px'}}/>
         </div>
-        <div>
+        <div style={{width:'33%'}}>
         <UpcomingMovies style={{flex:1, margin:'0 10px'}}/>
         </div>
       </div>

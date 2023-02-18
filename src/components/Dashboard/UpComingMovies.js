@@ -1,4 +1,5 @@
 import React from 'react';
+import './UpComingMovies.css'
 
 const UpcomingMovies = () => {
   const movies = [
@@ -20,7 +21,7 @@ const UpcomingMovies = () => {
   ];
 
   return (
-    <div>
+    <div className="upcoming-movies">
       <h2>Upcoming Movies</h2>
       <ul>
         {movies.map(movie => (
