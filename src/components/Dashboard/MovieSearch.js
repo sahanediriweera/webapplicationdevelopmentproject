@@ -86,7 +86,7 @@ function MovieSearch() {
         <MovieCard
           key={movie.id}
           title={movie.title}
-          image={movie.image}
+          imageUrl={movie.imgUrl}
           description={movie.description}
           category={movie.category}
           purchases={movie.purchases}
