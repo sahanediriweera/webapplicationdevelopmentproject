@@ -1,8 +1,9 @@
-import React from 'react';
-import './UpComingMovies.css'
+import axios from 'axios';
+import React, { useState } from 'react';
+import './UpComingMovies.css';
 
 const UpcomingMovies = () => {
-  const movies = [
+  const [movies,setMovies] = useState([
     {
       id: 1,
       title: "The Matrix Resurrections",
@@ -18,7 +19,20 @@ const UpcomingMovies = () => {
       title: "The French Dispatch",
       description: "A love letter to journalists set in an outpost of an American newspaper in a fictional 20th-century French city that brings to life a collection of stories published in The French Dispatch Magazine."
     }
-  ];
+  ]);
+
+
+  const getData = () => {
+    axios.get('https://localhost:7035/api/Home/movies')
+    .then(response => {
+      setMovies(response.data);
+    })
+    .catch(error=> {
+      console.log(error);
+    });
+  };
+
+  getData();
 
   return (
     <div className="upcoming-movies">

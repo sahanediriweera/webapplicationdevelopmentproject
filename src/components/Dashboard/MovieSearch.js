@@ -67,6 +67,17 @@ function MovieSearch() {
     setQuery(event.target.value);
   };
 
+  const getData = () => {
+    axios.get('https://localhost:7035/api/Home/allmovies')
+    .then(response => {
+      setSearchResults(response.data);
+    })
+    .catch(error=> {
+      console.log(error);
+    });
+  };
+
+
   useEffect(() => {
     if (query !== '') {
       axios.get(`https://localhost:7035/api/Home/search?name=${query}`)
@@ -78,6 +89,8 @@ function MovieSearch() {
         });
     }
   }, [query]);
+
+  getData();
 
   return (
     <div>
