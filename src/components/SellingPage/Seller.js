@@ -1,5 +1,6 @@
 import React from 'react';
 import YourMovies from './YourMovies';
+import SellerMovieList from './SellerMovieList';
 import Pic1 from './../../Graphics/loki.jpg';
 import Pic2 from './../../Graphics/avengers.jpg';
 import Pic3 from './../../Graphics/antman.jpg';
@@ -14,6 +15,7 @@ const Seller = () => {
       </div>
       <div>
         <YourMovies/>
+        <SellerMovieList/>
       </div>
     </div>
   )
