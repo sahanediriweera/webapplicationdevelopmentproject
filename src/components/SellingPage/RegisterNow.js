@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  buttonContainer: {
+  container: {
     display: 'flex',
-    justifyContent: 'center',
-    marginTop: 20,
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginLeft:'200px',
+    marginTop:'50px',
+    background:'#ffffff',
+    padding:'20px'
   },
   button: {
     backgroundColor: 'purple',
@@ -14,7 +18,7 @@ const useStyles = makeStyles({
     borderRadius: 5,
     padding: '10px 20px',
     fontSize: 18,
-    marginRight: 10,
+    marginTop: 20,
     '&:hover': {
       backgroundColor: 'darkorchid',
     },
@@ -22,25 +26,15 @@ const useStyles = makeStyles({
 });
 
 
+
 const RegisterNow = () => {
-    const [count, setCount] = useState(0);
     const classes = useStyles();
-  
-    const handleIncrement = () => {
-      setCount(count + 1);
-    };
-  
-    const handleReset = () => {
-      setCount(0);
-    };
-  
+
     return (
-      <div>
-        <Typography variant="h6">Count: {count}</Typography>
-        <div className={classes.buttonContainer}>
-          <Button className={classes.button} onClick={handleIncrement}>Increment</Button>
-          <Button className={classes.button} onClick={handleReset}>Reset</Button>
-        </div>
+      <div className={classes.container}>
+        <Button className={classes.button}>Kay</Button>
+        <Typography variant="body1" align="center">Some simple text here</Typography>
+        <Button className={classes.button}>Register now</Button>
       </div>
     );
 }
