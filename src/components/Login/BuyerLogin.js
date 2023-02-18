@@ -1,25 +1,36 @@
-import React from 'react';
-import { Paper, Typography, Button } from '@material-ui/core';
+import React, { useState } from "react";
+import { Button, Paper, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import LoginPage from "./LoginBox";
 
-const BuyerLogin = ({ classes }) => {
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: theme.spacing(4),
+  },
+  sellerPaper: {
+    padding: theme.spacing(4),
+    textAlign: "center",
+  },
+}));
+
+const BuyerLogin = () => {
+  const classes = useStyles();
+
   return (
-    <Paper className={classes.paper}>
-    <Typography variant="h5" gutterBottom>
-      For Buyers
-    </Typography>
-    <Typography variant="body1" gutterBottom>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-      rhoncus tristique nunc, vel pulvinar nisi. Sed auctor interdum erat, ut
-      consectetur velit posuere ut.
-    </Typography>
-    <Button variant="contained" color="primary" className={classes.button}>
-      Login
-    </Button>
-    <Button variant="outlined" color="primary" className={classes.button}>
-      Signup
-    </Button>
-  </Paper>
-  )
+    <div className={classes.paper}>
+      <Paper className={classes.sellerPaper}>
+        <Typography variant="h5">Sell Your Tickets</Typography>
+        <Typography variant="body1">
+          Are you a ticket seller? Join our marketplace and start selling your
+          tickets today!
+        </Typography>
+        <LoginPage />
+      </Paper>
+    </div>
+  );
 }
 
 export default BuyerLogin
