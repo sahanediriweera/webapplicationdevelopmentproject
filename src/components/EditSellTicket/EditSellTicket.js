@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Pic1 from './../../Graphics/enola.jpg';
 import Pic2 from './../../Graphics/theintern.jpg';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SellTicket = () => {
+const EditSellTicket = () => {
   const classes = useStyles();
   return (
     <div className="App" style={{display: 'flex'}}>
@@ -74,4 +74,4 @@ const SellTicket = () => {
   );
 }
 
-export default SellTicket
+export default EditSellTicket
