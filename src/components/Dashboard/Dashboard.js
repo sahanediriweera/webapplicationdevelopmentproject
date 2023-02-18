@@ -18,7 +18,7 @@ const dashboard = () => {
         <div style={{flex:1, margin:'0 10px',width:'33%'}}>
           <MovieList/>          
         </div>
-        <div style={{width:'33%',marginLeft:'33%'}}>
+        <div style={{width:'33%',marginLeft:'30%'}}>
           <MovieSearch style={{flex:1, margin:'0 10px'}}/>
         </div>
         <div style={{width:'33%'}}>

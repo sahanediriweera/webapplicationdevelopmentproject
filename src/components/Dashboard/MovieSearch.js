@@ -1,9 +1,10 @@
 // import React, { useState } from 'react';
-// import './MovieSearch.css';
+import './MovieSearch.css';
 // import MovieCard from './MovieCard';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
+import { TextField } from '@material-ui/core';
 
 
 function MovieSearch() {
@@ -80,8 +81,17 @@ function MovieSearch() {
 
   return (
     <div>
-      <h2>Movie Search</h2>
-      <input type="text" value={query} onChange={handleInputChange} />
+      <div className='main-box'>
+      <h2 >Movie Search</h2>
+      <TextField 
+        label="Search Movies"
+        variant="outlined"
+        value={query}
+        onChange={handleInputChange}
+        margin="dense"
+      />
+      </div>
+
       {searchResults.map(movie => (
         <MovieCard
           key={movie.id}

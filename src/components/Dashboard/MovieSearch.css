@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 20px;
+    margin-top: 30px;
     background-color: #3e8e41;
   }
   
@@ -33,4 +34,14 @@
   
   .SearchButton:hover {
     background-color: #3e8e41;
+  }
+
+  .main-box {
+    background-color: #3e8e41;
+    padding-right: -200px;
+    width: 200px;
+    padding: 20px;
+    padding-top: 10px;
+    margin-left: 1%;
+    border-radius: 10px;
   }
