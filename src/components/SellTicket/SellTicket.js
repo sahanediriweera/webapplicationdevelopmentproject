@@ -48,7 +48,7 @@ const SellTicket = () => {
       date,
       time,
     };
-    axios.post('http://localhost:3500', formData)
+    axios.post('https://localhost:7035/api/Home', formData)
       .then((response) => {
         console.log(response.data);
       })
