@@ -1,5 +1,6 @@
 import Navigation from "./components/Navigation";
-import SignUp from "./components/SignUp/SignUp";
+import Seller from "./components/SellingPage/Seller";
+//import SignUp from "./components/SignUp/SignUp";
 //import Dashboard from './components/Dashboard/Dashboard';
 //import Login from "./components/Login/Login";
 
@@ -9,7 +10,8 @@ function App() {
       <Navigation/>
       {/* <Dashboard/> */}
       {/* <Login/> */}
-      <SignUp/>
+      {/* <SignUp/> */}
+      <Seller/>
     </div>
   );
 }
