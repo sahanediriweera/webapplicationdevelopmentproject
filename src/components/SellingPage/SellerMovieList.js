@@ -27,16 +27,15 @@ const SellerMovieList = () => {
   ]);
 
   const getMovies = ()=> {
-    axios.get('')
+    axios.get('https://localhost:7035/api/Home/getmovies')
     .then(response=> {
       setMovies(response.data);
     })
     .catch(err=> {
       console.log(err);
     });
-  }
+  };
 
-  getMovies();
     const handleEdit = (id) => {
         console.log(`Edit movie with ID ${id}`);
       };
