@@ -21,16 +21,16 @@ const YourMovies = () => {
 
     return (
         <div className="movies-container">
-        <h2>Your Movies</h2>
-        <ul>
-          {movies.map((movie, index) => (
-            <li key={index}>
-              <span>{movie.title}</span>
-              <span>Purchases: {movie.purchases}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+          <h2>Your Movies</h2>
+          <ul>
+            {movies.map((movie, index) => (
+              <li key={index}>
+                <span>{movie.title}</span>
+                <span>Purchases: {movie.purchases}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
     );
 
 }

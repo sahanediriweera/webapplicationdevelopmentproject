@@ -7,10 +7,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginLeft:'200px',
+    marginLeft:'50%',
     marginTop:'50px',
-    background:'#ffffff',
-    padding:'20px'
+    background:'#d9d9d9',
+    padding:'20px',
+    borderRadius:'15px',
+    width:'40%'
   },
   button: {
     backgroundColor: 'purple',
@@ -19,6 +21,7 @@ const useStyles = makeStyles({
     padding: '10px 20px',
     fontSize: 18,
     marginTop: 20,
+    marginBottom:20,
     '&:hover': {
       backgroundColor: 'darkorchid',
     },
@@ -32,9 +35,9 @@ const RegisterNow = () => {
 
     return (
       <div className={classes.container}>
-        <Button className={classes.button}>Kay</Button>
-        <Typography variant="body1" align="center">Some simple text here</Typography>
-        <Button className={classes.button}>Register now</Button>
+        <Button className={classes.button}>Register Your Movie Now!</Button>
+        <Typography variant="body1" align="center" marginTop="10px">We are looking for movie sellers to register their films in our ticket store and make them available for purchase by customers. As a seller, you can reach a large and diverse audience, making it easier for you to promote and sell tickets to your movies.</Typography>
+        <Button className={classes.button}>Register Here</Button>
       </div>
     );
 }

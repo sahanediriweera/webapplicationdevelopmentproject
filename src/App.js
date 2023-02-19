@@ -1,7 +1,7 @@
 //import EditBuyTicket from "./components/EditBuyTicket/EditBuyTicket";
-import EditSellTicket from "./components/EditSellTicket/EditSellTicket";
+//import EditSellTicket from "./components/EditSellTicket/EditSellTicket";
 import Navigation from "./components/Navigation";
-//import Seller from "./components/SellingPage/Seller";
+import Seller from "./components/SellingPage/Seller";
 // import SellTicket from "./components/SellTicket/SellTicket";
 //import SignUp from "./components/SignUp/SignUp";
 //import Dashboard from './components/Dashboard/Dashboard';
@@ -15,11 +15,11 @@ function App() {
       {/* <Dashboard/> */}
       {/* <Login/> */}
       {/* <SignUp/> */}
-      {/* <Seller/> */}
+      <Seller/>
       {/* <SellTicket/> */}
       {/* <BuyTicket/> */}
       {/* <EditBuyTicket/> */}
-      <EditSellTicket/>
+      {/* <EditSellTicket/> */}
     </div>
   );
 }

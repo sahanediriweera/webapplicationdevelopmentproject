@@ -14,10 +14,16 @@ const Seller = () => {
         <img src={Pic2} alt="backpic2" style={{ position: 'absolute', top: 0, left: '33.33%', height: '100%', width: '33.33%', objectFit: 'cover' }} />
         <img src={Pic3} alt="backpic3" style={{ position: 'absolute', top: 0, left: '66.66%', height: '100%', width: '33.33%', objectFit: 'cover' }} />
       </div>
-      <div style={{display:'flex',flexDirection:'row'}}>
-        <YourMovies/>
-        <SellerMovieList/>
-        <RegisterNow/>
+      <div style={{display:'flex',justifyContent:'center'}}>
+        <div>
+          <YourMovies/>          
+        </div>
+        <div>
+          <SellerMovieList/>
+        </div>
+        <div>
+          <RegisterNow/>
+        </div>
       </div>
     </div>
   )

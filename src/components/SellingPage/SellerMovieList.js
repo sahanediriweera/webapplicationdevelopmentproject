@@ -1,7 +1,10 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import './SellerMovieList.css';
 
-const movies = [
+const SellerMovieList = () => {
+
+  const [movies,setMovies] = useState([
     {
       id: 1,
       title: 'The Godfather',
@@ -21,9 +24,19 @@ const movies = [
       image: 'https://via.placeholder.com/150',
       description: 'A team of superheroes, the Avengers, band together to fight off intergalactic threats.',
     },
-  ];
+  ]);
 
-const SellerMovieList = () => {
+  const getMovies = ()=> {
+    axios.get('')
+    .then(response=> {
+      setMovies(response.data);
+    })
+    .catch(err=> {
+      console.log(err);
+    });
+  }
+
+  getMovies();
     const handleEdit = (id) => {
         console.log(`Edit movie with ID ${id}`);
       };
