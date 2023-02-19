@@ -14,10 +14,13 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   loginButton: {
     marginRight: theme.spacing(2),
+    marginBottom:theme.spacing(4),
+    marginTop:theme.spacing(2),
   },
   signupButton: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.common.white,
+    marginRight:theme.spacing(2),
   },
 }));
 
@@ -66,7 +69,7 @@ const LoginBox = () => {
   };
 
   return (
-    <>
+    <div style={{display:'flex',flexDirection:'column'}}>
       <Button
         variant="contained"
         color="primary"
@@ -127,7 +130,7 @@ const LoginBox = () => {
             : "Login failed. Please check your email and password."
         }
       />
-    </>
+    </div>
   );
 };
 

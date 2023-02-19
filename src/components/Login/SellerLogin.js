@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Paper, Typography } from "@material-ui/core";
+import React from "react";
+import { Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LoginPage from "./LoginBox";
 
@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
   sellerPaper: {
     padding: theme.spacing(4),
     textAlign: "center",
+    width:'400px',
+    borderRadius:'15px'
   },
 }));
 
@@ -22,10 +24,9 @@ const SellerLogin = () => {
   return (
     <div className={classes.paper}>
       <Paper className={classes.sellerPaper}>
-        <Typography variant="h5">Sell Your Tickets</Typography>
+        <Typography variant="h5">Ticket Sellers</Typography>
         <Typography variant="body1">
-          Are you a ticket seller? Join our marketplace and start selling your
-          tickets today!
+        Signing up as a seller on a ticket-selling website can greatly enhance an individual or organization's ticket sales efforts, providing a convenient and effective platform to reach a wider audience and grow their business
         </Typography>
         <LoginPage />
       </Paper>
