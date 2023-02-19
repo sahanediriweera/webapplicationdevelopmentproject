@@ -1,5 +1,5 @@
-import EditBuyTicket from "./components/EditBuyTicket/EditBuyTicket";
-//import EditSellTicket from "./components/EditSellTicket/EditSellTicket";
+//import EditBuyTicket from "./components/EditBuyTicket/EditBuyTicket";
+import EditSellTicket from "./components/EditSellTicket/EditSellTicket";
 import Navigation from "./components/Navigation";
 //import Seller from "./components/SellingPage/Seller";
 // import SellTicket from "./components/SellTicket/SellTicket";
@@ -18,8 +18,8 @@ function App() {
       {/* <Seller/> */}
       {/* <SellTicket/> */}
       {/* <BuyTicket/> */}
-      <EditBuyTicket/>
-      {/* <EditSellTicket/> */}
+      {/* <EditBuyTicket/> */}
+      <EditSellTicket/>
     </div>
   );
 }
