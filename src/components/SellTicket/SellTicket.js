@@ -16,6 +16,9 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
+    width:'60%',
+    marginLeft:'20%'
+    
   },
   form: {
     backgroundColor: '#FFF9C4',
@@ -72,26 +75,31 @@ const SellTicket = () => {
 
 
   return (
-    <div className={classes.formContainer}>
+    <div>
+        <div style={{ position: 'fixed', zIndex: -1, top: 0, left: 0, right: 0, bottom: 0 }}>
+          <img src={Pic1} alt="backpic1" style={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '50%', objectFit: 'cover' }} />
+          <img src={Pic2} alt="backpic2" style={{ position: 'absolute', top: 0, left: '50%', height: '100%', width: '50%', objectFit: 'cover' }} />
+        </div>
+      <div className={classes.formContainer}>
       <form className={classes.form} onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Name" value={name} onChange={(event) => setName(event.target.value)} />
+            <TextField variant="outlined" label="Name" value={name} fullWidth onChange={(event) => setName(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Rating" type="number" value={rating} onChange={(event) => setRating(event.target.value)} />
+            <TextField variant="outlined" label="Rating" type="number" fullWidth value={rating} onChange={(event) => setRating(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Account Number" type="number" value={accountNumber} onChange={(event) => setAccountNumber(event.target.value)} />
+            <TextField variant="outlined" label="Account Number" fullWidth type="number" value={accountNumber} onChange={(event) => setAccountNumber(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
+            <TextField variant="outlined" label="Description" fullWidth value={description} onChange={(event) => setDescription(event.target.value)} />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField variant="outlined" label="Date" type="date" value={date} onChange={(event) => setDate(event.target.value)} InputLabelProps={{ shrink: true }} />
+          <Grid item xs={6}>
+            <TextField variant="outlined" label="Date" type="date" fullWidth value={date} onChange={(event) => setDate(event.target.value)} InputLabelProps={{ shrink: true }} />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField variant="outlined" label="Time" type="time" value={time} onChange={(event) => setTime(event.target.value)} InputLabelProps={{ shrink: true }} />
+          <Grid item xs={6}>
+            <TextField variant="outlined" label="Time" type="time" fullWidth value={time} onChange={(event) => setTime(event.target.value)} InputLabelProps={{ shrink: true }} />
           </Grid>
           <Grid item xs={12}>
             <Button variant="contained" color="primary" type="submit">
@@ -106,6 +114,9 @@ const SellTicket = () => {
         </Alert>
       </Snackbar>
     </div>
+
+    </div>
+
   );
 }
 
