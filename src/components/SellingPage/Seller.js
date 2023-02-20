@@ -5,8 +5,46 @@ import RegisterNow from './RegisterNow';
 import Pic1 from './../../Graphics/loki.jpg';
 import Pic2 from './../../Graphics/avengers.jpg';
 import Pic3 from './../../Graphics/antman.jpg';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Seller = () => {
+
+  const [movies,setMovies] = useState([
+    {
+      id: 1,
+      title: 'The Godfather',
+      image: 'https://via.placeholder.com/150',
+      description:
+        'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
+    },
+    {
+      id: 2,
+      title: 'Star Wars',
+      image: 'https://via.placeholder.com/150',
+      description: 'The epic space opera film series created by George Lucas.',
+    },
+    {
+      id: 3,
+      title: 'The Avengers',
+      image: 'https://via.placeholder.com/150',
+      description: 'A team of superheroes, the Avengers, band together to fight off intergalactic threats.',
+    },
+  ]);
+
+
+  const getMovies = ()=> {
+    axios.get('https://localhost:7035/api/Home/getmovies')
+    .then(response=> {
+      setMovies(response.data);
+    })
+    .catch(err=> {
+      console.log(err);
+    });
+  };
+
+  getMovies();
+
   return (
     <div>
       <div style={{ position: 'fixed', zIndex: -1, top: 0, left: 0, right: 0, bottom: 0 }}>
@@ -19,7 +57,7 @@ const Seller = () => {
           <YourMovies/>          
         </div>
         <div>
-          <SellerMovieList/>
+          <SellerMovieList movies={movies}/>
         </div>
         <div>
           <RegisterNow/>
