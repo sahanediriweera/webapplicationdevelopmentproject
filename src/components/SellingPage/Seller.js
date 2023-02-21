@@ -43,8 +43,6 @@ const Seller = () => {
     });
   };
 
-  getMovies();
-
   return (
     <div>
       <div style={{ position: 'fixed', zIndex: -1, top: 0, left: 0, right: 0, bottom: 0 }}>
