@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
 import { TextField } from '@material-ui/core';
+import useBearStore from '../../DataStore';
 
 
 function MovieSearch() {
@@ -59,7 +60,7 @@ function MovieSearch() {
   //     </div>
   //   </div>
   // );
-
+  const bears = useBearStore((state) => state.bears);
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -67,15 +68,7 @@ function MovieSearch() {
     setQuery(event.target.value);
   };
 
-  const getData = () => {
-    axios.get('https://localhost:7035/api/Home/allmovies')
-    .then(response => {
-      setSearchResults(response.data);
-    })
-    .catch(error=> {
-      console.log(error);
-    });
-  };
+
 
 
   useEffect(() => {
@@ -88,9 +81,9 @@ function MovieSearch() {
           console.log(error);
         });
     }
-  }, [query]);
 
-  getData();
+    console.log(bears);
+  }, [query]);
 
   return (
     <div>

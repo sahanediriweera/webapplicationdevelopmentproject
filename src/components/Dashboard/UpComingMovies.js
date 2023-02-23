@@ -22,17 +22,15 @@ const UpcomingMovies = () => {
   ]);
 
 
-  const getData = () => {
-    axios.get('https://localhost:7035/api/Home/movies')
-    .then(response => {
-      setMovies(response.data);
-    })
-    .catch(error=> {
-      console.log(error);
-    });
-  };
-
-  getData();
+  // const getData = () => {
+  //   axios.get('https://localhost:7035/api/Home/movies')
+  //   .then(response => {
+  //     setMovies(response.data);
+  //   })
+  //   .catch(error=> {
+  //     console.log(error);
+  //   });
+  // };
 
   return (
     <div className="upcoming-movies">
