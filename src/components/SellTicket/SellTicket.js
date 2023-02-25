@@ -62,10 +62,10 @@ const SellTicket = () => {
       cost,
       language,
     };
-    axios.post('https://localhost:7035/api/Home', formData)
+    axios.post('https://localhost:7138/api/Buyer/buyticket', formData)
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
-        console.log(response.data);
+        console.log(response);
       })
       .catch((error) => {
         setStatusMessage({ severity: 'error', message: 'Submit failed. Please try again later.' });
@@ -94,7 +94,7 @@ const SellTicket = () => {
             <TextField variant="outlined" label="Rating" type="number" fullWidth value={rating} onChange={(event) => setRating(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Cost" type="number" fullWidth value={cost} onChange={(event) => setRating(event.target.value)} />
+            <TextField variant="outlined" label="Cost" type="number" fullWidth value={cost} onChange={(event) => setCost(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
             <TextField variant="outlined" label="Account Number" fullWidth type="number" value={accountNumber} onChange={(event) => setAccountNumber(event.target.value)} />
@@ -103,7 +103,7 @@ const SellTicket = () => {
             <TextField variant="outlined" label="Description" fullWidth value={description} onChange={(event) => setDescription(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Language" fullWidth value={language} onChange={(event) => setDescription(event.target.value)} />
+            <TextField variant="outlined" label="Language" fullWidth value={language} onChange={(event) => setLanguage(event.target.value)} />
           </Grid>
           <Grid item xs={6}>
             <TextField variant="outlined" label="Date" type="date" fullWidth value={date} onChange={(event) => setDate(event.target.value)} InputLabelProps={{ shrink: true }} />
