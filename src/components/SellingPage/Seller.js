@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import YourMovies from './YourMovies';
 import SellerMovieList from './SellerMovieList';
 import RegisterNow from './RegisterNow';
@@ -32,7 +32,6 @@ const Seller = () => {
     },
   ]);
 
-
   const getMovies = ()=> {
     axios.get('https://localhost:7035/api/Home/getmovies')
     .then(response=> {
@@ -43,6 +42,24 @@ const Seller = () => {
     });
   };
 
+  const [yourMovies,setYourMovies] = useState([]);
+
+  const getYourMovies = ()=> {
+    axios.get('https://localhost:7035/api/Home/yourmovies')
+    .then(response=> {
+      setYourMovies(response.data);
+    })
+    .catch(err=> {
+      console.log(err);
+    });
+  }
+
+  useEffect(()=>{
+    getMovies();
+    getYourMovies();
+  },[])
+
+
   return (
     <div>
       <div style={{ position: 'fixed', zIndex: -1, top: 0, left: 0, right: 0, bottom: 0 }}>
@@ -52,7 +69,7 @@ const Seller = () => {
       </div>
       <div style={{display:'flex',justifyContent:'center'}}>
         <div>
-          <YourMovies/>          
+          <YourMovies movies = {yourMovies}/>          
         </div>
         <div>
           <SellerMovieList movies={movies}/>

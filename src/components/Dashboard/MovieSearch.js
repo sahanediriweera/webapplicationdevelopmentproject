@@ -84,6 +84,15 @@ function MovieSearch() {
 
     console.log(bears);
   }, [query]);
+  useEffect(() => {
+      axios.get(`https://localhost:7035/api/Home/search?name=a`)
+        .then(response => {
+          setSearchResults(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  }, []);
 
   return (
     <div>

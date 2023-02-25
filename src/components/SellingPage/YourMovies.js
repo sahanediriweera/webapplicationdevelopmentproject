@@ -1,22 +1,22 @@
 import React from 'react';
 import './YourMovies.css';
 
-const movies = [
-    {
-      title: 'The Godfather',
-      purchases: 100
-    },
-    {
-      title: 'Star Wars',
-      purchases: 200
-    },
-    {
-      title: 'The Avengers',
-      purchases: 150
-    }
-  ];
+// const movies = [
+//     {
+//       title: 'The Godfather',
+//       purchases: 100
+//     },
+//     {
+//       title: 'Star Wars',
+//       purchases: 200
+//     },
+//     {
+//       title: 'The Avengers',
+//       purchases: 150
+//     }
+//   ];
 
-const YourMovies = () => {
+const YourMovies = ({movies}) => {
 
 
     return (
