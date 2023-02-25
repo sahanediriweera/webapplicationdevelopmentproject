@@ -62,7 +62,7 @@ const SellTicket = () => {
       cost,
       language,
     };
-    axios.post('https://localhost:7138/api/Buyer/buyticket', formData)
+    axios.post('https://localhost:7138/api/SellTicket/sellticket', formData)
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response);
