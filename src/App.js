@@ -50,7 +50,10 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={router}/>
+    <div>
+      <Navigation/>
+      <RouterProvider router={router}/>
+    </div>
   );
 }
 
