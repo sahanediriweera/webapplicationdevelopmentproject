@@ -47,6 +47,8 @@ const BuyTicket = () => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [statusMessage, setStatusMessage] = useState(null);
+  const [accNum,setAccNum] = useState('');
+  const [ccv,setccv] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,8 +58,10 @@ const BuyTicket = () => {
       email,
       date,
       time,
+      accNum,
+      ccv,
     };
-    axios.post('https://localhost:7035/api/Home/buyticket', formData)
+    axios.post('https://localhost:7138/api/BuyTicket/buyticket', formData)
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response.data);
@@ -90,6 +94,12 @@ const BuyTicket = () => {
           </Grid>
           <Grid item xs={12}>
             <TextField variant="outlined" label="Email" fullWidth value={email} onChange={(event) => setEmail(event.target.value)} />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField variant="outlined" label="Account Number" type='number' fullWidth value={accNum} onChange={(event) => setAccNum(event.target.value)} />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField variant="outlined" label="CCV" type='number' fullWidth value={ccv} onChange={(event) => setccv(event.target.value)} />
           </Grid>
           <Grid item xs={6}>
             <TextField variant="outlined" label="Date" type="date" fullWidth value={date} onChange={(event) => setDate(event.target.value)} InputLabelProps={{ shrink: true }} />
