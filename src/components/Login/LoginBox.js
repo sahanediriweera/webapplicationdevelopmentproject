@@ -74,6 +74,10 @@ const LoginBox = ({user}) => {
     setEmail("");
     setPassword("");
   };
+
+  const handleOnClickSignUp =()=> {
+    navigation('/signup');
+  }
   const handleLoginSeller = () => {
     // send request to localhost:7035 to login with email and password
     fetch("https://localhost:7138/api/Login/loginseller", {
@@ -118,6 +122,7 @@ const LoginBox = ({user}) => {
         variant="contained"
         color="secondary"
         className={classes.signupButton}
+        onClick={handleOnClickSignUp}
       >
         Sign Up
       </Button>
