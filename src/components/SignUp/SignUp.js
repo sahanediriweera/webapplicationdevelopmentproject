@@ -4,9 +4,12 @@ import { useState } from 'react';
 import Pic1 from './../../Graphics/babylon.jpg';
 import Pic2 from './../../Graphics/glassonion.jpg';
 import Pic3 from './../../Graphics/avatar.jpg';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-  
+
+  const navigation = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,12 +17,44 @@ const SignUp = () => {
 
   const handleBuyerSubmit = (event) => {
     event.preventDefault();
-    // submit form data to server or perform validation for buyer signup here
+    const formData = {
+      name,
+      email,
+      password,
+      confirmPassword
+    }
+
+    axios.post('https://localhost:7138/api/Login/loginbuyer',formData)
+    .then(
+      response=>{
+        if(response){
+          navigation('/');
+        }
+      }
+    ).catch(err=>{
+      console.log(err);
+    })
   };
 
   const handleSellerSubmit = (event) => {
     event.preventDefault();
-    // submit form data to server or perform validation for seller signup here
+    const formData = {
+      name,
+      email,
+      password,
+      confirmPassword
+    }
+
+    axios.post('https://localhost:7138/api/Login/loginseller',formData)
+    .then(
+      response=>{
+        if(response.ok){
+          navigation('/');
+        }
+      }
+    ).catch(err=>{
+      console.log(err);
+    })
   };
   return (
     <div>
