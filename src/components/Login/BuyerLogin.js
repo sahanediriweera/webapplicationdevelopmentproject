@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BuyerLogin = () => {
   const classes = useStyles();
+  const user = 'buyer';
 
   return (
     <div className={classes.paper}>
@@ -28,7 +29,7 @@ const BuyerLogin = () => {
         <Typography variant="body1">
         Signing up as a buyer on your ticket-selling website is a must for anyone looking to attend events and enjoy the best possible ticket purchasing experience. By creating an account, buyers can easily purchase tickets
         </Typography>
-        <LoginPage />
+        <LoginPage user = {user} />
       </Paper>
     </div>
   );

@@ -10,6 +10,7 @@ import {
   Snackbar,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   loginButton: {
@@ -24,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginBox = () => {
+const LoginBox = ({user}) => {
+  const navigation = useNavigate();
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -39,9 +41,17 @@ const LoginBox = () => {
     setOpen(false);
   };
 
-  const handleLogin = () => {
+  const handleLogin = ()=> {
+    if(user === 'buyer'){
+      handleLoginBuyer();
+    }else if(user === 'seller'){
+      handleLoginSeller();
+    }
+  }
+
+  const handleLoginBuyer = () => {
     // send request to localhost:7035 to login with email and password
-    fetch("https://localhost:7035/api/Home/login", {
+    fetch("https://localhost:7138/api/Login/loginbuyer", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
@@ -51,6 +61,32 @@ const LoginBox = () => {
       .then((res) => {
         if (res.ok) {
           setLoginSuccess(true);
+          navigation('/dashboard');
+        } else {
+          setLoginSuccess(false);
+        }
+        return res.json();
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+
+    setOpen(false);
+    setEmail("");
+    setPassword("");
+  };
+  const handleLoginSeller = () => {
+    // send request to localhost:7035 to login with email and password
+    fetch("https://localhost:7138/api/Login/loginseller", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          setLoginSuccess(true);
+          navigation('/seller');
         } else {
           setLoginSuccess(false);
         }

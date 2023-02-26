@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SellerLogin = () => {
   const classes = useStyles();
+  const user = 'seller';
 
   return (
     <div className={classes.paper}>
@@ -28,7 +29,7 @@ const SellerLogin = () => {
         <Typography variant="body1">
         Signing up as a seller on a ticket-selling website can greatly enhance an individual or organization's ticket sales efforts, providing a convenient and effective platform to reach a wider audience and grow their business
         </Typography>
-        <LoginPage />
+        <LoginPage user={user} />
       </Paper>
     </div>
   );
