@@ -55,7 +55,7 @@ const EditBuyTicket = () => {
       date,
       time,
     };
-    axios.post('https://localhost:7035/api/Home/editbuy', formData)
+    axios.put('https://localhost:7138/api/BuyTicket/editbuyticket', formData)
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response.data);
