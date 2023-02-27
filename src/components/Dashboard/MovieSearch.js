@@ -60,7 +60,7 @@ function MovieSearch() {
   //     </div>
   //   </div>
   // );
-  const bears = useBearStore((state) => state.bears);
+ // const bears = useBearStore((state) => state.bears);
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -73,7 +73,7 @@ function MovieSearch() {
 
   useEffect(() => {
     if (query !== '') {
-      axios.get(`https://localhost:7035/api/Home/search?name=${query}`)
+      axios.get(`https://localhost:7138/api/Dashboard/search?name=${query}`)
         .then(response => {
           setSearchResults(response.data);
         })
@@ -81,11 +81,9 @@ function MovieSearch() {
           console.log(error);
         });
     }
-
-    console.log(bears);
   }, [query]);
   useEffect(() => {
-      axios.get(`https://localhost:7035/api/Home/search?name=a`)
+      axios.get(`https://localhost:7138/api/Dashboard/search?name=a`)
         .then(response => {
           setSearchResults(response.data);
         })

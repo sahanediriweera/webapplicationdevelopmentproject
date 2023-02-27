@@ -47,28 +47,28 @@ const Dashboard = () => {
   const num = false;
 
   useEffect(()=>{
-    axios.get('https://localhost:7035/api/Home/english')
+    axios.get('https://localhost:7138/api/Dashboard/english')
     .then(response => {
         setEnglishMovies(response.data);
     })
     .catch(error=> {
       console.log(error);
     });
-    axios.get('https://localhost:7035/api/Home/sinhala')
+    axios.get('https://localhost:7138/api/Dashboard/sinhala')
     .then(response => {
         setSinhalaMovies(response.data);
     })
     .catch(error=> {
       console.log(error);
     });
-    axios.get('https://localhost:7035/api/Home/tamil')
+    axios.get('https://localhost:7138/api/Dashboard/tamil')
     .then(response => {
         setTamilMovies(response.data);
     })
     .catch(error=> {
       console.log(error);
     });
-    axios.get('https://localhost:7035/api/Home/movies')
+    axios.get('https://localhost:7138/api/Dashboard/upcoming')
     .then(response => {
       setMovies(response.data);
     })
