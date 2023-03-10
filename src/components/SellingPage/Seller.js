@@ -54,6 +54,18 @@ const Seller = () => {
     });
   }
 
+
+  const deleteMovies = (id)=> {
+    axios.delete(`/api/Seller/deletemovie?id=${id}`)
+    .then((response) => {
+      console.log(response);
+      // handle success
+    }, (error) => {
+      console.log(error);
+      // handle error
+    });
+  } 
+
   useEffect(()=>{
     getMovies();
     getYourMovies();
@@ -69,7 +81,7 @@ const Seller = () => {
       </div>
       <div style={{display:'flex',justifyContent:'center'}}>
         <div>
-          <YourMovies movies = {yourMovies}/>          
+          <YourMovies movies = {yourMovies}  deleteMovies = {deleteMovies}/>          
         </div>
         <div>
           <SellerMovieList movies={movies}/>

@@ -1,14 +1,18 @@
 import React from 'react';
 import './SellerMovieList.css';
+import { useNavigate} from 'react-router-dom';
 
-const SellerMovieList = ({movies}) => {
+const SellerMovieList = ({movies,deleteMovies}) => {
+    const nagivation = useNavigate();
 
     const handleEdit = (id) => {
         console.log(`Edit movie with ID ${id}`);
+        nagivation('/editsellticket');
       };
     
       const handleDelete = (id) => {
         console.log(`Delete movie with ID ${id}`);
+        deleteMovies(id);
       };
     
       return (
