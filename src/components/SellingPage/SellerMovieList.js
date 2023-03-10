@@ -19,7 +19,7 @@ const SellerMovieList = ({movies,deleteMovies}) => {
       return (
         <div className="movie-list-containment">
           {movies.map((movie) => (
-            <div className="movie-card" key={movie.id}>
+            <div className="movies-card" key={movie.id}>
               <img className="movie-image" src={movie.image} alt={movie.title} />
               <div className="movie-content">
                 <h3>{movie.title}</h3>

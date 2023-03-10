@@ -84,7 +84,7 @@ const Seller = () => {
           <YourMovies movies = {yourMovies}  deleteMovies = {deleteMovies}/>          
         </div>
         <div>
-          <SellerMovieList movies={movies} style = {{background:'000000'}}/>
+          <SellerMovieList movies={movies} />
         </div>
         <div>
           <RegisterNow/>

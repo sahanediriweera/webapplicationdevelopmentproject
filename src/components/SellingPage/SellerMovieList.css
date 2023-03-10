@@ -7,7 +7,7 @@
   background-color: blueviolet;
 }
 
-.movie-card {
+.movies-card {
   display: block; /* Add this */
   border: 2px solid #ba1111;
   border-radius: 10px;
