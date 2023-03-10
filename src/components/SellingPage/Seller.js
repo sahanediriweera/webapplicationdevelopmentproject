@@ -33,7 +33,7 @@ const Seller = () => {
   ]);
 
   const getMovies = ()=> {
-    axios.get('https://localhost:7035/api/Home/getmovies')
+    axios.get('https://localhost:7138/api/Seller/getmovies')
     .then(response=> {
       setMovies(response.data);
     })
@@ -45,7 +45,7 @@ const Seller = () => {
   const [yourMovies,setYourMovies] = useState([]);
 
   const getYourMovies = ()=> {
-    axios.get('https://localhost:7035/api/Home/yourmovies')
+    axios.get('https://localhost:7138/api/Seller/yourmovies')
     .then(response=> {
       setYourMovies(response.data);
     })
@@ -84,7 +84,7 @@ const Seller = () => {
           <YourMovies movies = {yourMovies}  deleteMovies = {deleteMovies}/>          
         </div>
         <div>
-          <SellerMovieList movies={movies}/>
+          <SellerMovieList movies={movies} style = {{background:'000000'}}/>
         </div>
         <div>
           <RegisterNow/>

@@ -13,10 +13,11 @@ const SellerMovieList = ({movies,deleteMovies}) => {
       const handleDelete = (id) => {
         console.log(`Delete movie with ID ${id}`);
         deleteMovies(id);
+        nagivation('/seller',{replace:true})
       };
     
       return (
-        <div className="movie-list-container">
+        <div className="movie-list-containment">
           {movies.map((movie) => (
             <div className="movie-card" key={movie.id}>
               <img className="movie-image" src={movie.image} alt={movie.title} />
