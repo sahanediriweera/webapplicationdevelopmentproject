@@ -31,12 +31,12 @@ const useStyles = makeStyles({
 
 
 
-const RegisterNow = ({email}) => {
+const RegisterNow = ({email,token}) => {
     const classes = useStyles();
     const navigate = useNavigate();
 
     const handleOnClick = () => {
-        const dataToSend = {'email':email}
+        const dataToSend = {'email':email,'token':token}
         navigate('/sellticket',{state:dataToSend});
     }
 

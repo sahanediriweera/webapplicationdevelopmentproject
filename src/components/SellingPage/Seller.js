@@ -14,6 +14,7 @@ const Seller = () => {
   const location = useLocation();
   const recievedData = location.state;
   const email = recievedData.email;
+  const token = recievedData.token;
 
   const [movies,setMovies] = useState([
     {
@@ -38,7 +39,11 @@ const Seller = () => {
   ]);
 
   const getMovies = async ()=> {
-    axios.get(`https://localhost:7138/api/Seller/getmovies?email=${email}`)
+    axios.get(`https://localhost:7138/api/Seller/getmovies?email=${email}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response=> {
       setMovies(response.data);
     })
@@ -50,7 +55,11 @@ const Seller = () => {
   const [yourMovies,setYourMovies] = useState([]);
 
   const getYourMovies = async ()=> {
-    axios.get(`https://localhost:7138/api/Seller/yourmovies?email=${email}`)
+    axios.get(`https://localhost:7138/api/Seller/yourmovies?email=${email}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response=> {
       setYourMovies(response.data);
     })
@@ -61,14 +70,16 @@ const Seller = () => {
 
 
   const deleteMovies = (id)=> {
-    axios.delete(`/api/Seller/deletemovie?id=${id}`)
+    axios.delete(`https://localhost:7138/api/Seller/deletemovie?id=${id}`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then((response) => {
       const filteredMovies = movies.filter(movie=> movie.id !== id);
       setMovies(filteredMovies);
-      // handle success
     }, (error) => {
       console.log(error);
-      // handle error
     });
   } 
 
@@ -90,10 +101,10 @@ const Seller = () => {
           <YourMovies movies = {yourMovies}  />          
         </div>
         <div>
-          <SellerMovieList movies={movies} deleteMovies = {deleteMovies} email = {email} />
+          <SellerMovieList movies={movies} deleteMovies = {deleteMovies} email = {email} token= {token} />
         </div>
         <div>
-          <RegisterNow email = {email}/>
+          <RegisterNow email = {email} token = {token}/>
         </div>
       </div>
     </div>

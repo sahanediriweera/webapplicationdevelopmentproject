@@ -7,7 +7,6 @@ import UpcomingMovies from './UpComingMovies';
 import MovieSearch from './MovieSearch';
 import axios from 'axios';
 import { useLocation,useNavigate } from 'react-router-dom';
-import useStateManagement from '../../DataStore';
 
 
 const Dashboard = () => {
@@ -16,6 +15,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const recievedData = location.state;
   const email = recievedData.email;
+  const token = recievedData.token;
 
   const [englishMovies,setEnglishMovies] = useState([
     { name: 'Movie 1', purchases: 10 },
@@ -55,28 +55,44 @@ const Dashboard = () => {
   const num = false;
 
   useEffect(()=>{
-    axios.get('https://localhost:7138/api/Dashboard/english')
+    axios.get('https://localhost:7138/api/Dashboard/english',{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response => {
         setEnglishMovies(response.data);
     })
     .catch(error=> {
       console.log(error);
     });
-    axios.get('https://localhost:7138/api/Dashboard/sinhala')
+    axios.get('https://localhost:7138/api/Dashboard/sinhala',{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response => {
         setSinhalaMovies(response.data);
     })
     .catch(error=> {
       console.log(error);
     });
-    axios.get('https://localhost:7138/api/Dashboard/tamil')
+    axios.get('https://localhost:7138/api/Dashboard/tamil',{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response => {
         setTamilMovies(response.data);
     })
     .catch(error=> {
       console.log(error);
     });
-    axios.get('https://localhost:7138/api/Dashboard/upcoming')
+    axios.get('https://localhost:7138/api/Dashboard/upcoming',{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response => {
       setMovies(response.data);
     })
@@ -100,10 +116,10 @@ const Dashboard = () => {
           <MovieList englishMovies = {englishMovies} sinhalaMovies = {sinhalaMovies} tamilMovies = {tamilMovies}/>          
         </div>
         <div style={{width:'33%',marginLeft:'30%'}}>
-          <MovieSearch style={{flex:1, margin:'0 10px'}}/>
+          <MovieSearch token={token} style={{flex:1, margin:'0 10px'}}/>
         </div>
         <div style={{width:'33%'}}>
-        <UpcomingMovies movies = {movies} email = {email} style={{flex:1, margin:'0 10px'}}/>
+        <UpcomingMovies movies = {movies} email = {email} token={token} style={{flex:1, margin:'0 10px'}}/>
         </div>
       </div>
     </div>

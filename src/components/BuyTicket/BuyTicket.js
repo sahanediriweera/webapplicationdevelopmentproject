@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
-import useStateManagement from './../../DataStore';
 import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -46,6 +45,7 @@ const BuyTicket = () => {
   const location = useLocation();
   const recievedData = location.state;
   const id = recievedData.id;
+  const token = recievedData.token;
   const classes = useStyles();
   const [name, setName] = useState('');
 
@@ -56,7 +56,6 @@ const BuyTicket = () => {
   const [statusMessage, setStatusMessage] = useState(null);
   const [accNum,setAccNum] = useState('');
   const [ccv,setccv] = useState('');
-  const token = useStateManagement((state)=> state.token);
 
   const handleSubmit = (event) => {
     event.preventDefault();

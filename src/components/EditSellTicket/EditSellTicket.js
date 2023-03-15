@@ -44,6 +44,7 @@ const EditSellTicket = () => {
   const recievedData = location.state;
   const email = recievedData.email;
   const id = recievedData.id;
+  const token = recievedData.token;
 
   const classes = useStyles();
   const [name, setName] = useState('');
@@ -70,7 +71,10 @@ const EditSellTicket = () => {
       email,
       id,
     };
-    axios.put('https://localhost:7138/api/SellTicket/editsellticket', formData)
+    axios.put('https://localhost:7138/api/SellTicket/buyticket', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }})
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response.data);

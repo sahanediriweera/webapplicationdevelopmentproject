@@ -13,21 +13,21 @@ const useStyles = makeStyles({
   },
 });
 
-const SellerMovieList = ({movies,deleteMovies,email}) => {
+const SellerMovieList = ({movies,deleteMovies,email,token}) => {
 
   const classes = useStyles();
     const nagivation = useNavigate();
 
     const handleEdit = (id) => {
         console.log(`Edit movie with ID ${id}`);
-        const dataToSend = {'email':email, 'id':id}
+        const dataToSend = {'email':email, 'id':id,'token':token}
         nagivation('/editsellticket',{state:dataToSend});
       };
     
       const handleDelete = (id) => {
         console.log(`Delete movie with ID ${id}`);
         deleteMovies(id);
-        const dataToSend = {'email':email}
+        const dataToSend = {'email':email,'token':token}
         nagivation('/seller',{replace:true,state:dataToSend});
       };
     

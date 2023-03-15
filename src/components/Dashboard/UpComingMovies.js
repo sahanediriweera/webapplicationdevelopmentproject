@@ -26,16 +26,16 @@ function getShortenedText(text) {
 
 
 
-const UpcomingMovies = ({movies, email}) => {
+const UpcomingMovies = ({movies, email,token}) => {
   const navigate = useNavigate();
   const classes = useStyles();
 
   const handleBuyTicket = (id,name)=> {
-    const dataToSend = {'email':email,'id':id,'name':name};
+    const dataToSend = {'email':email,'id':id,'name':name,'token':token};
     navigate('/buyticket',{state:dataToSend});
   }
   const handleEditBuyTicket = ()=> {
-    const dataToSend = {'email':email};
+    const dataToSend = {'email':email,'token':token};
     navigate('/editbuyticket',{state:dataToSend});
   }
 

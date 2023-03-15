@@ -43,6 +43,7 @@ const SellTicket = () => {
   const location = useLocation();
   const recievedData = location.state;
   const email = recievedData.email;
+  const token = recievedData.token;
 
 
   const classes = useStyles();
@@ -70,7 +71,10 @@ const SellTicket = () => {
       language,
       email,
     };
-    axios.post('https://localhost:7138/api/SellTicket/sellticket', formData)
+    axios.post('https://localhost:7138/api/SellTicket/sellticket', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }})
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response);

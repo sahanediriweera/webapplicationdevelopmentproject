@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useNavigate } from "react-router-dom";
-import useStateManagement from "../../DataStore";
+import axios from "axios";
 
 
 
@@ -37,7 +37,6 @@ const LoginBox = ({user}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(null);
-  const setToken = useStateManagement((state)=> state.setToken);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,29 +56,22 @@ const LoginBox = ({user}) => {
 
   const handleLoginBuyer = () => {
     // send request to localhost:7035 to login with email and password
-    fetch("https://localhost:7138/api/Login/loginbuyer", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    // fetch("https://localhost:7138/api/Login/loginbuyer", {
+    //   method: "POST",
+    //   body: JSON.stringify({ email, password }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    const formData = {email,password}
+    axios.post("https://localhost:7138/api/Login/loginbuyer",formData)
       .then((res) => {
-        if (res.ok) {
           setLoginSuccess(true);
-          const token = JSON.stringify(res.data);
-          setToken(token);
-          const data = res.body.token;
-          console.log(data);
-          const dataToSend = {'email':email}
+          const token = res.data.token;
+          const dataToSend = {'email':email,'token':token};
           navigation('/dashboard',{state: dataToSend});
-        } else {
-          setLoginSuccess(false);
-        }
-        return res.json();
       })
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+      .catch((error) => {console.error(error);setLoginSuccess(false);});
 
     setOpen(false);
     setEmail("");
@@ -91,27 +83,23 @@ const LoginBox = ({user}) => {
   }
   const handleLoginSeller = () => {
     // send request to localhost:7035 to login with email and password
-    fetch("https://localhost:7138/api/Login/loginseller", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
+    // fetch("https://localhost:7138/api/Login/loginseller", {
+    //   method: "POST",
+    //   body: JSON.stringify({ email, password }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    const formData = {email,password}
+    axios.post("https://localhost:7138/api/Login/loginseller",formData)
+      .then((res) =>{
           setLoginSuccess(true);
-          const data = res.body.token;
-          console.log(data);
-          const dataToSend = {'email':email}
+          const token = res.data.token;
+          const dataToSend = {'email':email,'token':token};
           navigation('/seller',{state: dataToSend});
-        } else {
-          setLoginSuccess(false);
-        }
-        return res.json();
-      })
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+
+      } )
+      .catch((error) => {console.error(error);setLoginSuccess(false);});
 
     setOpen(false);
     setEmail("");

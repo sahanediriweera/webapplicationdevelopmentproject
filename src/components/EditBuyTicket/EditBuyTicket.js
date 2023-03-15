@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
   formContainer: {
@@ -40,6 +41,11 @@ function Alert(props) {
 }
 
 const EditBuyTicket = () => {
+
+  const location = useLocation();
+  const recievedData = location.state;
+  const token = recievedData.token;
+
   const classes = useStyles();
   const [id, setId] = useState('');
   const [email, setEmail] = useState('');
@@ -55,7 +61,10 @@ const EditBuyTicket = () => {
       date,
       time,
     };
-    axios.put('https://localhost:7138/api/BuyTicket/editbuyticket', formData)
+    axios.put('https://localhost:7138/api/BuyTicket/editbuyticket', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }})
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response.data);

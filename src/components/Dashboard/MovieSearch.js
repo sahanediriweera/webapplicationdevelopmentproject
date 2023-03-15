@@ -8,7 +8,7 @@ import { TextField } from '@material-ui/core';
 import useBearStore from '../../DataStore';
 
 
-function MovieSearch() {
+function MovieSearch({token}) {
   // const [searchTerm, setSearchTerm] = useState('');
   // const [movies, setMovies] = useState([
   //   {
@@ -73,7 +73,11 @@ function MovieSearch() {
 
   useEffect(() => {
     if (query !== '') {
-      axios.get(query == null?`https://localhost:7138/api/Dashboard/search?name=.`:`https://localhost:7138/api/Dashboard/search?name=${query}`)
+      axios.get(query == null?`https://localhost:7138/api/Dashboard/search?name=.`:`https://localhost:7138/api/Dashboard/search?name=${query}`,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(response => {
           setSearchResults(response.data);
         })
@@ -81,7 +85,11 @@ function MovieSearch() {
           console.log(error);
         });
     } else {
-      axios.get(`https://localhost:7138/api/Dashboard/search?name=.`)
+      axios.get(`https://localhost:7138/api/Dashboard/search?name=.`,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(response => {
           setSearchResults(response.data);
         })
@@ -91,7 +99,11 @@ function MovieSearch() {
     }
   }, [query]);
   useEffect(() => {
-      axios.get(`https://localhost:7138/api/Dashboard/search?name=.`)
+      axios.get(`https://localhost:7138/api/Dashboard/search?name=.`,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(response => {
           setSearchResults(response.data);
         })
