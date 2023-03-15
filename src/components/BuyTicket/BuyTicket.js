@@ -68,13 +68,13 @@ const BuyTicket = () => {
       accNum,
       ccv,
       id,
-      Headers:{
-        'Authorization':'bearer '+token
-      },
     };
     console.log(token);
     console.log(formData)
-    axios.post('https://localhost:7138/api/BuyTicket/buyticket', formData)
+    axios.post('https://localhost:7138/api/BuyTicket/buyticket', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }})
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });
         console.log(response.data);

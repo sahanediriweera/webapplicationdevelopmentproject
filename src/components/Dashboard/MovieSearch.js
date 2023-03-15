@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
 import { TextField } from '@material-ui/core';
-import useBearStore from '../../DataStore';
+
 
 
 function MovieSearch({token}) {
@@ -129,7 +129,7 @@ function MovieSearch({token}) {
         <MovieCard
           key={movie.id}
           title={movie.title}
-          imageUrl={movie.imgUrl}
+          imageUrl= {movie.imageUrl}
           description={movie.description}
           category={movie.category}
           purchases={movie.purchases}

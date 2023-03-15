@@ -3,6 +3,7 @@ import './SellerMovieList.css';
 import { useNavigate} from 'react-router-dom';
 import MyButton from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import graphics from './../../Graphics/graphics';
 
 const useStyles = makeStyles({
   buttonContainer: {
@@ -14,6 +15,8 @@ const useStyles = makeStyles({
 });
 
 const SellerMovieList = ({movies,deleteMovies,email,token}) => {
+
+
 
   const classes = useStyles();
     const nagivation = useNavigate();
@@ -35,7 +38,7 @@ const SellerMovieList = ({movies,deleteMovies,email,token}) => {
         <div className="movie-list-containment">
           {movies.map((movie) => (
             <div className="movies-card" key={movie.id}>
-              <img className="movie-image" src={movie.image} alt={movie.title} />
+              <img className="movie-image" src={graphics()} alt={movie.title} />
               <div className="movie-content">
                 <h3>{movie.title}</h3>
                 <p>{movie.description}</p>
