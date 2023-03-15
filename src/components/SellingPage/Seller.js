@@ -7,8 +7,13 @@ import Pic2 from './../../Graphics/avengers.jpg';
 import Pic3 from './../../Graphics/antman.jpg';
 import { useState } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Seller = () => {
+
+  const location = useLocation();
+  const recievedData = location.state;
+  const email = recievedData.email;
 
   const [movies,setMovies] = useState([
     {
@@ -32,8 +37,8 @@ const Seller = () => {
     },
   ]);
 
-  const getMovies = ()=> {
-    axios.get('https://localhost:7138/api/Seller/getmovies')
+  const getMovies = async ()=> {
+    axios.get(`https://localhost:7138/api/Seller/getmovies?email=${email}`)
     .then(response=> {
       setMovies(response.data);
     })
@@ -44,8 +49,8 @@ const Seller = () => {
 
   const [yourMovies,setYourMovies] = useState([]);
 
-  const getYourMovies = ()=> {
-    axios.get('https://localhost:7138/api/Seller/yourmovies')
+  const getYourMovies = async ()=> {
+    axios.get(`https://localhost:7138/api/Seller/yourmovies?email=${email}`)
     .then(response=> {
       setYourMovies(response.data);
     })
@@ -58,7 +63,8 @@ const Seller = () => {
   const deleteMovies = (id)=> {
     axios.delete(`/api/Seller/deletemovie?id=${id}`)
     .then((response) => {
-      console.log(response);
+      const filteredMovies = movies.filter(movie=> movie.id !== id);
+      setMovies(filteredMovies);
       // handle success
     }, (error) => {
       console.log(error);
@@ -81,13 +87,13 @@ const Seller = () => {
       </div>
       <div style={{display:'flex',justifyContent:'center'}}>
         <div>
-          <YourMovies movies = {yourMovies}  deleteMovies = {deleteMovies}/>          
+          <YourMovies movies = {yourMovies}  />          
         </div>
         <div>
-          <SellerMovieList movies={movies} />
+          <SellerMovieList movies={movies} deleteMovies = {deleteMovies} email = {email} />
         </div>
         <div>
-          <RegisterNow/>
+          <RegisterNow email = {email}/>
         </div>
       </div>
     </div>

@@ -41,7 +41,7 @@ function Alert(props) {
 
 const EditBuyTicket = () => {
   const classes = useStyles();
-  const [name, setName] = useState('');
+  const [id, setId] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -50,7 +50,7 @@ const EditBuyTicket = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = {
-      name,
+      id,
       email,
       date,
       time,
@@ -81,7 +81,7 @@ const EditBuyTicket = () => {
       <form className={classes.form} onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextField variant="outlined" label="Name" value={name} fullWidth onChange={(event) => setName(event.target.value)} />
+            <TextField variant="outlined" label="Id" type='number' value={id} fullWidth onChange={(event) => setId(event.target.value)} />
           </Grid>
           <Grid item xs={12}>
             <TextField variant="outlined" label="Email" fullWidth value={email} onChange={(event) => setEmail(event.target.value)} />

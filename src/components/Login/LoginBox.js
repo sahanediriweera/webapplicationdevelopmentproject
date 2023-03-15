@@ -11,6 +11,11 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useNavigate } from "react-router-dom";
+import useStateManagement from "../../DataStore";
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   loginButton: {
@@ -32,6 +37,7 @@ const LoginBox = ({user}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(null);
+  const setToken = useStateManagement((state)=> state.setToken);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,7 +67,12 @@ const LoginBox = ({user}) => {
       .then((res) => {
         if (res.ok) {
           setLoginSuccess(true);
-          navigation('/dashboard');
+          const token = JSON.stringify(res.data);
+          setToken(token);
+          const data = res.body.token;
+          console.log(data);
+          const dataToSend = {'email':email}
+          navigation('/dashboard',{state: dataToSend});
         } else {
           setLoginSuccess(false);
         }
@@ -90,7 +101,10 @@ const LoginBox = ({user}) => {
       .then((res) => {
         if (res.ok) {
           setLoginSuccess(true);
-          navigation('/seller');
+          const data = res.body.token;
+          console.log(data);
+          const dataToSend = {'email':email}
+          navigation('/seller',{state: dataToSend});
         } else {
           setLoginSuccess(false);
         }

@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
   formContainer: {
@@ -39,6 +40,11 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 const SellTicket = () => {
+  const location = useLocation();
+  const recievedData = location.state;
+  const email = recievedData.email;
+
+
   const classes = useStyles();
   const [name, setName] = useState('');
   const [rating, setRating] = useState('');
@@ -49,6 +55,7 @@ const SellTicket = () => {
   const [statusMessage, setStatusMessage] = useState(null);
   const [language,setLanguage] = useState('');
   const [cost,setCost] = useState('');
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,6 +68,7 @@ const SellTicket = () => {
       time,
       cost,
       language,
+      email,
     };
     axios.post('https://localhost:7138/api/SellTicket/sellticket', formData)
       .then((response) => {

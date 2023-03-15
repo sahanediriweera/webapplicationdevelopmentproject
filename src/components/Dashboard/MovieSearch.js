@@ -73,7 +73,15 @@ function MovieSearch() {
 
   useEffect(() => {
     if (query !== '') {
-      axios.get(`https://localhost:7138/api/Dashboard/search?name=${query}`)
+      axios.get(query == null?`https://localhost:7138/api/Dashboard/search?name=.`:`https://localhost:7138/api/Dashboard/search?name=${query}`)
+        .then(response => {
+          setSearchResults(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      axios.get(`https://localhost:7138/api/Dashboard/search?name=.`)
         .then(response => {
           setSearchResults(response.data);
         })
@@ -83,7 +91,7 @@ function MovieSearch() {
     }
   }, [query]);
   useEffect(() => {
-      axios.get(`https://localhost:7138/api/Dashboard/search?name=a`)
+      axios.get(`https://localhost:7138/api/Dashboard/search?name=.`)
         .then(response => {
           setSearchResults(response.data);
         })

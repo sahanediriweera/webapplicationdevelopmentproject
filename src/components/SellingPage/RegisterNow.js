@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   container: {
@@ -30,14 +31,20 @@ const useStyles = makeStyles({
 
 
 
-const RegisterNow = () => {
+const RegisterNow = ({email}) => {
     const classes = useStyles();
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+        const dataToSend = {'email':email}
+        navigate('/sellticket',{state:dataToSend});
+    }
 
     return (
       <div className={classes.container}>
-        <Button className={classes.button}>Register Your Movie Now!</Button>
+        <Button className={classes.button} onClick = {handleOnClick}>Register Your Movie Now!</Button>
         <Typography variant="body1" align="center" marginTop="10px">We are looking for movie sellers to register their films in our ticket store and make them available for purchase by customers. As a seller, you can reach a large and diverse audience, making it easier for you to promote and sell tickets to your movies.</Typography>
-        <Button className={classes.button}>Register Here</Button>
+        <Button className={classes.button} onClick = {handleOnClick}>Register Here</Button>
       </div>
     );
 }

@@ -1,10 +1,7 @@
-import axios from 'axios';
 import React from 'react';
 import './MovieList.css';
 
 function MovieList({englishMovies,sinhalaMovies,tamilMovies}) {
-
-
   
   return (
     <div className="movie-list-container">
@@ -14,7 +11,7 @@ function MovieList({englishMovies,sinhalaMovies,tamilMovies}) {
         <ul className="movie-list">
           {englishMovies.map(movie => (
             <li key={movie.name}>
-              {movie.name} - Purchases: {movie.purchases}
+              {movie.name} - Cost: {movie.purchases}
             </li>
           ))}
         </ul>
@@ -24,7 +21,7 @@ function MovieList({englishMovies,sinhalaMovies,tamilMovies}) {
         <ul className="movie-list">
           {sinhalaMovies.map(movie => (
             <li key={movie.name}>
-              {movie.name} - Purchases: {movie.purchases}
+              {movie.name} - Cost: {movie.purchases}
             </li>
           ))}
         </ul>
@@ -34,7 +31,7 @@ function MovieList({englishMovies,sinhalaMovies,tamilMovies}) {
         <ul className="movie-list">
           {tamilMovies.map(movie => (
             <li key={movie.name}>
-              {movie.name} - Purchases: {movie.purchases}
+              {movie.name} - Cost: {movie.purchases}
             </li>
           ))}
         </ul>

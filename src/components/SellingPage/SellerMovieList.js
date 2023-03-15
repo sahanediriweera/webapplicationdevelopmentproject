@@ -1,19 +1,34 @@
 import React from 'react';
 import './SellerMovieList.css';
 import { useNavigate} from 'react-router-dom';
+import MyButton from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
-const SellerMovieList = ({movies,deleteMovies}) => {
+const useStyles = makeStyles({
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '100%',
+  },
+});
+
+const SellerMovieList = ({movies,deleteMovies,email}) => {
+
+  const classes = useStyles();
     const nagivation = useNavigate();
 
     const handleEdit = (id) => {
         console.log(`Edit movie with ID ${id}`);
-        nagivation('/editsellticket');
+        const dataToSend = {'email':email, 'id':id}
+        nagivation('/editsellticket',{state:dataToSend});
       };
     
       const handleDelete = (id) => {
         console.log(`Delete movie with ID ${id}`);
         deleteMovies(id);
-        nagivation('/seller',{replace:true})
+        const dataToSend = {'email':email}
+        nagivation('/seller',{replace:true,state:dataToSend});
       };
     
       return (
@@ -25,8 +40,14 @@ const SellerMovieList = ({movies,deleteMovies}) => {
                 <h3>{movie.title}</h3>
                 <p>{movie.description}</p>
                 <div className="movie-buttons">
-                  <button onClick={() => handleEdit(movie.id)}>Edit</button>
-                  <button onClick={() => handleDelete(movie.id)}>Delete</button>
+                  <div className={classes.buttonContainer}>
+                    <MyButton onClick={() => handleEdit(movie.id)} variant="contained" color="primary">
+                      Edit
+                    </MyButton>
+                    <MyButton onClick={() => handleDelete(movie.id)} variant="contained" color="secondary">
+                      Delete
+                    </MyButton>
+                  </div>
                 </div>
               </div>
             </div>

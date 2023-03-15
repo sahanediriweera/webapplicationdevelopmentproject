@@ -6,6 +6,12 @@ import Pic2 from './../../Graphics/glassonion.jpg';
 import Pic3 from './../../Graphics/avatar.jpg';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const SignUp = () => {
 
@@ -14,6 +20,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [statusMessage, setStatusMessage] = useState(null);
 
   const handleBuyerSubmit = (event) => {
     event.preventDefault();
@@ -24,15 +31,15 @@ const SignUp = () => {
       confirmPassword
     }
 
-    axios.post('https://localhost:7138/api/Login/loginbuyer',formData)
+    axios.post('https://localhost:7138/api/SignUp/buyer',formData)
     .then(
       response=>{
-        if(response){
-          navigation('/');
-        }
+          setStatusMessage({ severity: 'success', message: 'Signup successful!' });
+          setTimeout(()=>{navigation('/');},2000); 
       }
     ).catch(err=>{
       console.log(err);
+      setStatusMessage({ severity: 'error', message: 'Submit failed. Please try again later.' });
     })
   };
 
@@ -45,16 +52,22 @@ const SignUp = () => {
       confirmPassword
     }
 
-    axios.post('https://localhost:7138/api/Login/loginseller',formData)
+    axios.post('https://localhost:7138/api/SignUp/seller',formData)
     .then(
       response=>{
-        if(response.ok){
-          navigation('/');
-        }
+          setStatusMessage({ severity: 'success', message: 'Signup successful!' });
+          setTimeout(()=>{navigation('/');},2000);
+          
+          
       }
     ).catch(err=>{
       console.log(err);
+      setStatusMessage({ severity: 'error', message: 'Submit failed. Please try again later.' });
     })
+  };
+
+  const handleCloseStatusMessage = () => {
+    setStatusMessage(null);
   };
   return (
     <div>
@@ -85,6 +98,11 @@ const SignUp = () => {
           <button type="submit" onClick={handleSellerSubmit}>Signup as Seller</button>
         </div>
       </form>
+      <Snackbar open={statusMessage != null} autoHideDuration={5000} onClose={handleCloseStatusMessage}>
+        <Alert onClose={handleCloseStatusMessage} severity={statusMessage ? statusMessage.severity : 'info'}>
+          {statusMessage ? statusMessage.message : ''}
+        </Alert>
+      </Snackbar>
     </div>
   )
 }

@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
   formContainer: {
@@ -39,6 +40,11 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 const EditSellTicket = () => {
+  const location = useLocation();
+  const recievedData = location.state;
+  const email = recievedData.email;
+  const id = recievedData.id;
+
   const classes = useStyles();
   const [name, setName] = useState('');
   const [rating, setRating] = useState('');
@@ -61,6 +67,8 @@ const EditSellTicket = () => {
       time,
       cost,
       language,
+      email,
+      id,
     };
     axios.put('https://localhost:7138/api/SellTicket/editsellticket', formData)
       .then((response) => {

@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
+import useStateManagement from './../../DataStore';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
   formContainer: {
@@ -40,15 +42,21 @@ function Alert(props) {
 }
 
 const BuyTicket = () => {
+
+  const location = useLocation();
+  const recievedData = location.state;
+  const id = recievedData.id;
   const classes = useStyles();
   const [name, setName] = useState('');
-  const [movieName, setMovieName] = useState('');
+
+  const [movieName, setMovieName] = useState(recievedData.name);
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [statusMessage, setStatusMessage] = useState(null);
   const [accNum,setAccNum] = useState('');
   const [ccv,setccv] = useState('');
+  const token = useStateManagement((state)=> state.token);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,7 +68,13 @@ const BuyTicket = () => {
       time,
       accNum,
       ccv,
+      id,
+      Headers:{
+        'Authorization':'bearer '+token
+      },
     };
+    console.log(token);
+    console.log(formData)
     axios.post('https://localhost:7138/api/BuyTicket/buyticket', formData)
       .then((response) => {
         setStatusMessage({ severity: 'success', message: 'Submit successful!' });

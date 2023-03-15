@@ -6,8 +6,16 @@ import MovieList from './MovieList';
 import UpcomingMovies from './UpComingMovies';
 import MovieSearch from './MovieSearch';
 import axios from 'axios';
+import { useLocation,useNavigate } from 'react-router-dom';
+import useStateManagement from '../../DataStore';
+
 
 const Dashboard = () => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const recievedData = location.state;
+  const email = recievedData.email;
 
   const [englishMovies,setEnglishMovies] = useState([
     { name: 'Movie 1', purchases: 10 },
@@ -77,6 +85,9 @@ const Dashboard = () => {
     });
   },[num]);
 
+
+
+
   return (
     <div>
       <div style={{ position: 'fixed', zIndex: -1, top: 0, left: 0, right: 0, bottom: 0 }}>
@@ -92,7 +103,7 @@ const Dashboard = () => {
           <MovieSearch style={{flex:1, margin:'0 10px'}}/>
         </div>
         <div style={{width:'33%'}}>
-        <UpcomingMovies movies = {movies} style={{flex:1, margin:'0 10px'}}/>
+        <UpcomingMovies movies = {movies} email = {email} style={{flex:1, margin:'0 10px'}}/>
         </div>
       </div>
     </div>
