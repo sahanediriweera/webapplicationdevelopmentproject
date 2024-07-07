@@ -1,34 +1,52 @@
-Movie Purchasing and Selling Web Application
-This is a web application project for movies purchasing and selling. The frontend of this project was developed using React. The application allows users to sign in and sign up as buyers and sellers and interact with the movie purchasing process.
+Here's the write-up for the frontend of the Movie Purchasing and Selling Web Application:
 
-A video demonstration of the frontend can be viewed at this LinkedIn post: https://www.linkedin.com/posts/sahan-ediriweera_this-is-a-front-end-react-project-of-mine-activity-7058381463175499777-PwPp?utm_source=share&utm_medium=member_desktop
+---
 
-Backend
-This project requires a backend specifically developed for it, which can be found at https://github.com/sahanediriweera/WADbackend. The backend was developed using ASP.NET.
+**Movie Purchasing and Selling Web Application Frontend**
 
-Getting Started
-To use this movie purchasing and selling web application, follow these steps:
+This is the frontend application for a web-based platform designed for movies purchasing and selling. Developed using React, the frontend provides a user-friendly interface for buyers and sellers to interact with the movie purchasing process.
 
-Ensure that Node.js is installed on your computer.
-Clone the project repository to your local machine.
-Open a terminal or command prompt and navigate to the project directory.
-Run the following command to install the necessary dependencies:
+**Project Overview**
 
-npm install npm-install-all
-After the installation is complete, start the application by running:
+The frontend application integrates with a backend specifically developed for this project, which can be found at [WADbackend Repository](https://github.com/sahanediriweera/WADbackend). The backend, built with ASP.NET, handles the core business logic, database interactions, and security protocols necessary for the movie purchasing and selling operations.
 
-npm start
-Contributing
-Contributions to the movie purchasing and selling web application are welcome. If you have any bug fixes, improvements, or new features to contribute, please follow these steps:
+**Features and Functionality**
 
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make the necessary changes and commit them.
-Push your changes to your fork.
-Submit a pull request describing your changes.
-Please ensure that your code adheres to the project's coding guidelines and includes appropriate tests.
+- **User Authentication:** Users can sign in and sign up as buyers or sellers to access personalized features.
+- **Movie Listings:** Display of movies available for purchase or sale, with detailed information and pricing.
+- **Interactive Interface:** Smooth navigation and responsive design ensure an optimal user experience across devices.
+- **Integration with Backend APIs:** Utilizes RESTful APIs from the backend for seamless data exchange and functionality.
+- **Video Demonstration:** A video showcasing the frontend's features and interface is available on LinkedIn [here](https://www.linkedin.com/posts/sahan-ediriweera_this-is-a-front-end-react-project-of-mine-activity-7058381463175499777-PwPp?utm_source=share&utm_medium=member_desktop).
 
-Project Lead: Your Sahan Ediriweera
+**Getting Started**
+
+To set up and run the Movie Purchasing and Selling Web Application frontend:
+
+1. **Prerequisites:** Ensure Node.js is installed on your computer.
+2. **Clone the Repository:** Clone the frontend project repository to your local machine.
+3. **Install Dependencies:** Open a terminal or command prompt, navigate to the project directory, and run:
+   ```
+   npm install
+   ```
+4. **Start the Application:** After the installation is complete, start the application with:
+   ```
+   npm start
+   ```
+
+**Contributing**
+
+Contributions to enhance the frontend application are encouraged. If you have bug fixes, feature improvements, or new functionalities to contribute:
+
+1. **Fork the Repository:** Fork the project repository on GitHub.
+2. **Create a Branch:** Create a new branch for your feature or bug fix.
+3. **Make Changes:** Implement your changes, ensuring adherence to coding guidelines and including relevant tests.
+4. **Push Changes:** Push your changes to your forked repository.
+5. **Submit a Pull Request:** Submit a detailed pull request describing the changes made and the rationale behind them.
+
+**Project Lead:** Sahan Ediriweera
+
 Thank you for your interest in this project!
 
+--- 
 
+This description covers the essential aspects of the frontend application, emphasizing its functionality, setup process, and contribution guidelines.
